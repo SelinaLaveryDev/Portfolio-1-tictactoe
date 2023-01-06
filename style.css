@@ -1,0 +1,46 @@
+body {
+    align-content: center;
+}
+
+header {
+
+}
+
+h1 {
+    text-align: center;
+}
+
+.display-score {
+    height: 100px;
+    width: 600px;
+    border: 1px dashed #1E96FF;
+    background-color: #1E96FF;
+    text-align: center;
+    margin: auto;
+}
+
+.grid-container {
+    display: grid;
+    background-color: #E0F6FF;
+    border: 1px dashed #1E96FF;
+    grid-template-columns: 200px 200px 200px;
+    height: 600px;
+    width: 600px;
+    margin: auto;
+
+}
+
+.grid-item {
+    background-color: #1E96FF;
+    color: black;
+    margin: 10px;
+}
+
+.btn {
+    height: 100px;
+    width: 600px;
+    border: 1px dashed #1E96FF;
+    background-color: #1E96FF;
+    text-align: center;
+    margin: auto;
+}
