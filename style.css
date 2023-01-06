@@ -1,5 +1,7 @@
 body {
+    height: auto;
     align-content: center;
+    background-color: black;
 }
 
 header {
@@ -8,39 +10,85 @@ header {
 
 h1 {
     text-align: center;
+    color: white;
+    font-family: 'Michroma', sans-serif;
 }
 
 .display-score {
-    height: 100px;
-    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    height: 20px;
+    width: 420px;
     border: 1px dashed #1E96FF;
     background-color: #1E96FF;
     text-align: center;
     margin: auto;
+    padding: 40px;
+    font-size: 30px;
+    font-family: 'Michroma', sans-serif;
 }
 
 .grid-container {
     display: grid;
-    background-color: #E0F6FF;
-    border: 1px dashed #1E96FF;
-    grid-template-columns: 200px 200px 200px;
-    height: 600px;
-    width: 600px;
+    background-color: black;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid: gap 10px;
+    height: 500px;
+    width: 500px;
     margin: auto;
+    padding: 20px;
 
 }
 
 .grid-item {
-    background-color: #1E96FF;
+    background-color: #fff;
+    border: 1px solid #000;
+    text-align: center;
+    font-size: 100px;
+    font-weight: bold;
     color: black;
     margin: 10px;
+    padding: 10px;
+    font-family: 'Michroma', sans-serif;
 }
 
+.grid-item:hover {
+    background-color: #2980b9;
+}
+
+
 .btn {
-    height: 100px;
-    width: 600px;
-    border: 1px dashed #1E96FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+}
+
+.start-btn {
+    padding: 10px 20px;
+    font-size: 20px;
+    color: white;
     background-color: #1E96FF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 500px;
+    font-family: 'Michroma', sans-serif;
+}
+
+.start-btn:hover {
+    background-color: #2980b9;
+}
+
+.start-btn:active {
+    background-color: #2980b9;
+}
+
+footer {
+    font-family: 'Michroma', sans-serif;
+    color: white;
     text-align: center;
-    margin: auto;
 }
