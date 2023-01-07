@@ -29,9 +29,20 @@ let playButton = document.querySelector('#start-btn');
 
 let cells = document.querySelectorAll('.grid-item');
 
+//click listener event added for the cells on the board//
 cells.forEach(cell => {
     cell.addEventListener('click', event => {
         alert('You clicked a cell!');
     });
 });
+
+//function to reset board//
+function resetBoard(){
+    cells.forEach(function(cell) {
+        cell.innerHTML = '';
+    });
+}
+
+//event listener to call the resetBoard function//
+playButton.addEventListener('click', resetBoard);
 
