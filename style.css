@@ -28,6 +28,7 @@ h1 {
     padding: 40px;
     font-size: 30px;
     font-family: 'Michroma', sans-serif;
+    border-radius: 4px;
 }
 
 .grid-container {
@@ -53,6 +54,7 @@ h1 {
     margin: 10px;
     padding: 10px;
     font-family: 'Michroma', sans-serif;
+    border-radius: 4px;
 }
 
 .grid-item:hover {

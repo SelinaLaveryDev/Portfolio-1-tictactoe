@@ -19,20 +19,19 @@ Winner:
 */
 
 //VARIABLES of all board elements//
-// const playerX = 
+// const playerX = code
 // const playerO = 
 // const winningCombinations = 
 
-let display = document.querySelector('.display-score');
-let board = document.querySelector('.board');
-let cells = document.querySelectorAll('.grid-item');
+const display = document.querySelector('.display-score');
+const board = document.querySelector('.board');
 let playButton = document.querySelector('#start-btn');
-// console.log(playButton);
 
-// startGame();
+let cells = document.querySelectorAll('.grid-item');
 
-// for (let cell of cells) {
-//     cell.addEventListener('click', handleCellClick);
-// }
+cells.forEach(cell => {
+    cell.addEventListener('click', event => {
+        alert('You clicked a cell!');
+    });
+});
 
-// function handleCellClick();
