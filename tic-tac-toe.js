@@ -23,7 +23,7 @@ Winner:
 // const playerO = 
 // const winningCombinations = 
 
-const display = document.querySelector('.display-score');
+let display = document.querySelector('.display-score');
 const board = document.querySelector('.board');
 let playButton = document.querySelector('#start-btn');
 
@@ -41,8 +41,17 @@ function resetBoard(){
     cells.forEach(function(cell) {
         cell.innerHTML = '';
     });
-}
+};
 
-//event listener to call the resetBoard function//
-playButton.addEventListener('click', resetBoard);
+//function to change display after start button pressed//
+function playerOne() {
+    display.innerHTML = "Player 1 to start"
+    playButton.innerHTML = "Reset Game"
+};
+
+//event listener with anonymous function to call both functions in sequence//
+playButton.addEventListener('click', function() {
+    resetBoard();
+    playerOne();
+});
 
