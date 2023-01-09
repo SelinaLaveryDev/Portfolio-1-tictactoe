@@ -28,6 +28,7 @@ const board = document.querySelector('.board');
 let playButton = document.querySelector('#start-btn');
 
 let cells = document.querySelectorAll('.grid-item');
+let playerTurn = 1; //player 1 starts
 
 //click listener event added for the cells on the board//
 
@@ -41,11 +42,24 @@ function resetBoard(){
 
 //function to change display after start button pressed//
 function playerOne() {
-    display.innerHTML = "Player 1 to start"
-    playButton.innerHTML = "Reset Game"
-    cells.forEach((cell, index) => {
-        cell.addEventListener('click', event => {
-            console.log(`${index}`)
+    display.innerHTML = 'Player 1 to start'
+    display.style.backgroundColor = '#4d9186';
+    playButton.innerHTML = 'Reset Game'
+
+    
+    cells.forEach((cell, index) => { //runs for each function for each cell in grid//
+        cell.addEventListener('click', event => { //when clicked
+           if (playerTurn === 1) {
+            cell.innerHTML = 'X'; //changes to cross
+            cell.style.backgroundColor = '#4d9186'; //and color changes
+            playerTurn = 2; //switch to player 2's turn
+           } else {
+            //player 2's turn//
+            cell.innerHTML = 'O'; //changes to circle
+            cell.style.backgroundColor = '#684d6b'; //and color changes
+            playerTurn = 1; //switch to player 2's turn
+           }
+            cell.removeEventListener('click', event); //=> didnt work here. trying toggle.
         });
     });
 };
