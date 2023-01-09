@@ -30,11 +30,7 @@ let playButton = document.querySelector('#start-btn');
 let cells = document.querySelectorAll('.grid-item');
 
 //click listener event added for the cells on the board//
-cells.forEach(cell => {
-    cell.addEventListener('click', event => {
-        alert('You clicked a cell!');
-    });
-});
+
 
 //function to reset board//
 function resetBoard(){
@@ -47,6 +43,11 @@ function resetBoard(){
 function playerOne() {
     display.innerHTML = "Player 1 to start"
     playButton.innerHTML = "Reset Game"
+    cells.forEach((cell, index) => {
+        cell.addEventListener('click', event => {
+            console.log(`${index}`)
+        });
+    });
 };
 
 //event listener with anonymous function to call both functions in sequence//
