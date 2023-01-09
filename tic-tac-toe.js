@@ -42,9 +42,9 @@ function resetBoard(){
 
 //function to change display after start button pressed//
 function playerOne() {
-    display.innerHTML = 'Player 1 to start'
+    display.innerHTML = 'Player 1 to start';
     display.style.backgroundColor = '#4d9186';
-    playButton.innerHTML = 'Reset Game'
+    playButton.innerHTML = 'Reset Game';
 
     
     cells.forEach((cell, index) => { //runs for each function for each cell in grid//
@@ -53,13 +53,17 @@ function playerOne() {
             cell.innerHTML = 'X'; //changes to cross
             cell.style.backgroundColor = '#4d9186'; //and color changes
             playerTurn = 2; //switch to player 2's turn
+            display.innerHTML = 'Player 2 turn';//display changes to prompt player 2 to take their turn//
+            display.style.backgroundColor = '#684d6b';//player 2 display color change//
            } else {
             //player 2's turn//
             cell.innerHTML = 'O'; //changes to circle
             cell.style.backgroundColor = '#684d6b'; //and color changes
-            playerTurn = 1; //switch to player 2's turn
+            playerTurn = 1; //switch to player 1's turn
+            display.innerHTML = 'Player 1 turn';//display changes to prompt player 1 to take their turn//
+            display.style.backgroundColor = '#4d9186';//player 1 display color change//
            }
-            cell.removeEventListener('click', event); //=> didnt work here. trying toggle.
+            // cell.removeEventListener('click', event); //=> didnt work here. trying toggle.
         });
     });
 };
@@ -70,3 +74,14 @@ playButton.addEventListener('click', function() {
     playerOne();
 });
 
+function logClicks() {
+    let clicks = [];
+    cells.forEach((cell, index) => {
+        cell.addEventListener('click', event => {
+        clicks.push(index);
+        console.log(clicks);   
+            // console.log(`you clicked ${index}`);
+        })
+    })
+}
+logClicks()
