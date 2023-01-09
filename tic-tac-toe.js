@@ -29,6 +29,8 @@ let playButton = document.querySelector('#start-btn');
 
 let cells = document.querySelectorAll('.grid-item');
 let playerTurn = 1; //player 1 starts
+let player1Clicks = []; //to record which cell player1 clicked
+let player2Clicks = []; //to record which cell player2 clicked
 
 //click listener event added for the cells on the board//
 
@@ -52,6 +54,8 @@ function playerOne() {
            if (playerTurn === 1) {
             cell.innerHTML = 'X'; //changes to cross
             cell.style.backgroundColor = '#4d9186'; //and color changes
+            player1Clicks.push(index);//push p1 cell log into array
+            console.log(`player 1: ${player1Clicks}`);
             playerTurn = 2; //switch to player 2's turn
             display.innerHTML = 'Player 2 turn';//display changes to prompt player 2 to take their turn//
             display.style.backgroundColor = '#684d6b';//player 2 display color change//
@@ -59,6 +63,8 @@ function playerOne() {
             //player 2's turn//
             cell.innerHTML = 'O'; //changes to circle
             cell.style.backgroundColor = '#684d6b'; //and color changes
+            player2Clicks.push(index); //push p2 cell log into array
+            console.log(`player 2: ${player2Clicks}`);
             playerTurn = 1; //switch to player 1's turn
             display.innerHTML = 'Player 1 turn';//display changes to prompt player 1 to take their turn//
             display.style.backgroundColor = '#4d9186';//player 1 display color change//
@@ -74,14 +80,24 @@ playButton.addEventListener('click', function() {
     playerOne();
 });
 
-function logClicks() {
-    let clicks = [];
-    cells.forEach((cell, index) => {
-        cell.addEventListener('click', event => {
-        clicks.push(index);
-        console.log(clicks);   
-            // console.log(`you clicked ${index}`);
-        })
-    })
-}
-logClicks()
+// function playerOneLog() {
+    
+//     cells.forEach((cell, index) => {
+//         cell.addEventListener('click', event => {
+//         player1Clicks.push(index);
+//         console.log(player1Clicks);   
+//             // console.log(`you clicked ${index}`);
+//         })
+//     })
+// }
+
+// function playerTwoLog() {
+    
+//     cells.forEach((cell, index) => {
+//         cell.addEventListener('click', event => {
+//         player2Clicks.push(index);
+//         console.log(player2Clicks);   
+//             // console.log(`you clicked ${index}`);
+//         })
+//     })
+// }
