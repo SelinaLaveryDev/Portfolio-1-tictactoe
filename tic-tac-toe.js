@@ -50,6 +50,7 @@ cells.forEach((cell, index) => { //runs forEach function for each cell in grid//
     cell.addEventListener('click', event => { //when a cell is clicked
         if (playerTurn === 1) {
             cell.innerHTML = 'X'; //changes to cross
+            console.log(!(cell === '')); //=>true
             cell.style.backgroundColor = '#4d9186'; //and color changes
             player1Clicks.push(index);//push p1 cell log into array
             console.log(`player 1: ${player1Clicks}`);
@@ -59,6 +60,7 @@ cells.forEach((cell, index) => { //runs forEach function for each cell in grid//
         } else {
             //player 2's turn//
             cell.innerHTML = 'O'; //changes to circle
+            console.log(cell === '');//=>false
             cell.style.backgroundColor = '#684d6b'; //and color changes
             player2Clicks.push(index); //push p2 cell log into array
             console.log(`player 2: ${player2Clicks}`);
@@ -72,8 +74,8 @@ cells.forEach((cell, index) => { //runs forEach function for each cell in grid//
 
 //event listener with anonymous function to call both functions in sequence//
 playButton.addEventListener('click', function() {
-    startGame();
     resetBoard();
+    startGame();
 });
 
 //function to reset board//
