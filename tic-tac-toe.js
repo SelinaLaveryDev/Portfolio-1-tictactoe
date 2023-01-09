@@ -26,32 +26,29 @@ Winner:
 let display = document.querySelector('.display-score');
 const board = document.querySelector('.board');
 let playButton = document.querySelector('#start-btn');
-
 let cells = document.querySelectorAll('.grid-item');
 let playerTurn = 1; //player 1 starts
 let player1Clicks = []; //to record which cell player1 clicked
 let player2Clicks = []; //to record which cell player2 clicked
 
-//click listener event added for the cells on the board//
-
-
-//function to reset board//
-function resetBoard(){
+//function to start game after start button pressed//
+function startGame() {
+    display.innerHTML = 'Player 1 to start'; //change display
+    display.style.backgroundColor = '#4d9186'; //change display color
+    playButton.innerHTML = 'Reset Game'; //change text to indicate different function
+    player1Clicks = [];
+    player2Clicks = [];
     cells.forEach(function(cell) {
-        cell.innerHTML = '';
+        cell.innerHTML = ''; //the board clears
+        cell.style.backgroundColor = 'white';
     });
+    playerTurn = 1;
 };
 
-//function to change display after start button pressed//
-function playerOne() {
-    display.innerHTML = 'Player 1 to start';
-    display.style.backgroundColor = '#4d9186';
-    playButton.innerHTML = 'Reset Game';
-
-    
-    cells.forEach((cell, index) => { //runs for each function for each cell in grid//
-        cell.addEventListener('click', event => { //when clicked
-           if (playerTurn === 1) {
+//click listener event for the cells on board//
+cells.forEach((cell, index) => { //runs forEach function for each cell in grid//
+    cell.addEventListener('click', event => { //when a cell is clicked
+        if (playerTurn === 1) {
             cell.innerHTML = 'X'; //changes to cross
             cell.style.backgroundColor = '#4d9186'; //and color changes
             player1Clicks.push(index);//push p1 cell log into array
@@ -59,7 +56,7 @@ function playerOne() {
             playerTurn = 2; //switch to player 2's turn
             display.innerHTML = 'Player 2 turn';//display changes to prompt player 2 to take their turn//
             display.style.backgroundColor = '#684d6b';//player 2 display color change//
-           } else {
+        } else {
             //player 2's turn//
             cell.innerHTML = 'O'; //changes to circle
             cell.style.backgroundColor = '#684d6b'; //and color changes
@@ -68,17 +65,40 @@ function playerOne() {
             playerTurn = 1; //switch to player 1's turn
             display.innerHTML = 'Player 1 turn';//display changes to prompt player 1 to take their turn//
             display.style.backgroundColor = '#4d9186';//player 1 display color change//
-           }
+        }
             // cell.removeEventListener('click', event); //=> didnt work here. trying toggle.
-        });
     });
-};
+});
 
 //event listener with anonymous function to call both functions in sequence//
 playButton.addEventListener('click', function() {
+    startGame();
     resetBoard();
-    playerOne();
 });
+
+//function to reset board//
+function resetBoard(){
+    display.innerHTML = 'Player 1 to start'; //change display
+    display.style.backgroundColor = '#4d9186'; //change display color
+    playButton.innerHTML = 'Reset Game'; //change text to indicate different function
+    cells.forEach(function(cell) {
+        cell.innerHTML = ''; //the board clears
+        cell.style.backgroundColor = 'white';
+    });
+    playerTurn = 1;
+    player1Clicks = [];
+    player2Clicks = [];
+};
+
+
+// //function to reset board//
+// function resetBoard(){
+//     cells.forEach(function(cell) {
+//         cell.innerHTML = ''; //the board clears
+//         cell.style.backgroundColor = 'white';
+//     });
+// };
+
 
 // function playerOneLog() {
     
