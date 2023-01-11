@@ -19,8 +19,8 @@ Winner:
 */
 
 //VARIABLES of all board elements//
-// const playerX = code
-// const playerO =
+const playerX = "X";
+const playerO = "O";
 // const winningCombinations =
 
 let display = document.querySelector(".display-score");
@@ -31,13 +31,13 @@ const clickSound = new Audio("sounds/click_sound.mp3");
 const winSound = new Audio("sounds/winning_sound.mp3");
 const noWinSound = new Audio("sounds/no_winner_sound.mp3");
 let isWinner = false;
-let playerTurn = 1; //player 1 starts
+let playerTurn = playerX; //player 1 starts
 let player1Clicks = []; //to record which cell player1 clicked
 let player2Clicks = []; //to record which cell player2 clicked
 
 //function to start game after start button pressed//
 function startGame() {
-  display.innerHTML = "Player 1 to start"; //change display
+  display.innerHTML = "Player X to start"; //change display
   display.style.backgroundColor = "#2980b9"; //change display color #4d9186 #0CBF77 #0052CC
   playButton.innerHTML = "Reset Game"; //change text to indicate different function
   player1Clicks = [];
@@ -46,7 +46,7 @@ function startGame() {
     cell.innerHTML = ""; //the board clears
     cell.style.backgroundColor = "white";
   });
-  playerTurn = 1;
+  playerTurn = playerX;
   isWinner = false;
 }
 
@@ -64,7 +64,7 @@ function playerTurnToClick(cell, index) {
     //if cell is not blank, do nothing.
     return;
   }
-  if (playerTurn === 1) {
+  if (playerTurn === "X") {
     cell.innerHTML = "X"; //changes to cross
     // console.log(!(cell === '')); //=>true
     cell.style.backgroundColor = "#2980b9"; //and color changes
@@ -92,13 +92,13 @@ function playerTurnToClick(cell, index) {
     return;
   }
 
-  if (playerTurn === 1) {
-    playerTurn = 2; //switch to player 2's turn
-    display.innerHTML = "Player 2 turn"; //display changes to prompt player 2 to take their turn//
+  if (playerTurn === "X") {
+    playerTurn = "O"; //switch to player 2's turn
+    display.innerHTML = "Player O turn"; //display changes to prompt player 2 to take their turn//
     display.style.backgroundColor = "#3FBFBF"; //player 2 display color change//
   } else {
-    playerTurn = 1; //switch to player 1's turn
-    display.innerHTML = "Player 1 turn"; //display changes to prompt player 1 to take their turn//
+    playerTurn = "X"; //switch to player 1's turn
+    display.innerHTML = "Player X turn"; //display changes to prompt player 1 to take their turn//
     display.style.backgroundColor = "#2980b9"; //player 1 display color change//
   }
 }
@@ -119,7 +119,7 @@ function determineWinner(playerTurn) {
     [0, 4, 8], //diagonal 1
     [2, 4, 6], //diagonal 2
   ];
-  let playerClicks = playerTurn === 1 ? player1Clicks : player2Clicks;
+  let playerClicks = playerTurn === "X" ? player1Clicks : player2Clicks;
   // which player has the winning numbers //
   if (playerClicks.length >= 3) {
     const winningCombo = winningCombinations.some((combination) => {
