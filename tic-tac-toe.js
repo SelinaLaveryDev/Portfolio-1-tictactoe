@@ -27,6 +27,9 @@ let display = document.querySelector(".display-score");
 const board = document.querySelector(".board");
 let playButton = document.querySelector("#start-btn");
 let cells = document.querySelectorAll(".grid-item");
+const clickSound = new Audio("sounds/click_sound.mp3");
+const winSound = new Audio("sounds/winning_sound.mp3");
+const noWinSound = new Audio("sounds/no_winner_sound.mp3");
 let isWinner = false;
 let playerTurn = 1; //player 1 starts
 let player1Clicks = []; //to record which cell player1 clicked
@@ -35,7 +38,7 @@ let player2Clicks = []; //to record which cell player2 clicked
 //function to start game after start button pressed//
 function startGame() {
   display.innerHTML = "Player 1 to start"; //change display
-  display.style.backgroundColor = "#0052CC"; //change display color #4d9186 #0CBF77
+  display.style.backgroundColor = "#2980b9"; //change display color #4d9186 #0CBF77 #0052CC
   playButton.innerHTML = "Reset Game"; //change text to indicate different function
   player1Clicks = [];
   player2Clicks = [];
@@ -64,7 +67,7 @@ function playerTurnToClick(cell, index) {
   if (playerTurn === 1) {
     cell.innerHTML = "X"; //changes to cross
     // console.log(!(cell === '')); //=>true
-    cell.style.backgroundColor = "#0052CC"; //and color changes
+    cell.style.backgroundColor = "#2980b9"; //and color changes
     player1Clicks.push(index); //push p1 cell log into array
   } else {
     //player 2's turn//
@@ -73,17 +76,19 @@ function playerTurnToClick(cell, index) {
     cell.style.backgroundColor = "#3FBFBF"; //and color changes #684d6b #F5621D
     player2Clicks.push(index); //push p2 cell log into array
   }
-
+  clickSound.play();
   isWinner = determineWinner(playerTurn);
   console.log(isWinner);
 
   if (isWinner) {
     display.innerHTML = `Player ${playerTurn} WINS!`;
+    winSound.play();
 
     return;
   }
   if (player1Clicks.length + player2Clicks.length === 9 && !isWinner) {
-    display.innerHTML = "Its a DRAW!";
+    display.innerHTML = "It's a DRAW!";
+    noWinSound.play();
     return;
   }
 
@@ -94,7 +99,7 @@ function playerTurnToClick(cell, index) {
   } else {
     playerTurn = 1; //switch to player 1's turn
     display.innerHTML = "Player 1 turn"; //display changes to prompt player 1 to take their turn//
-    display.style.backgroundColor = "#0052CC"; //player 1 display color change//
+    display.style.backgroundColor = "#2980b9"; //player 1 display color change//
   }
 }
 //click listener event for the cells on board//
@@ -117,12 +122,12 @@ function determineWinner(playerTurn) {
   let playerClicks = playerTurn === 1 ? player1Clicks : player2Clicks;
   // which player has the winning numbers //
   if (playerClicks.length >= 3) {
-    const hasWon = winningCombinations.some((combination) => {
+    const winningCombo = winningCombinations.some((combination) => {
       return combination.every((element) => {
         return playerClicks.includes(element);
       });
     });
-    return hasWon ? playerTurn : false;
+    return winningCombo ? playerTurn : false;
   }
   return false;
 }
