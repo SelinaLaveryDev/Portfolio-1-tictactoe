@@ -23,6 +23,8 @@ let display = document.querySelector(".display-score");
 const board = document.querySelector(".board");
 let playButton = document.querySelector("#start-btn");
 let cells = document.querySelectorAll(".grid-item");
+const heading = document.querySelector("h1");
+
 const playerX = "X";
 const playerO = "O";
 let isWinner = false;
@@ -98,6 +100,16 @@ function playerTurnToClick(cell, index) {
 cells.forEach((cell, index) => {
   //runs forEach function for each cell in grid//
   cell.addEventListener("click", () => playerTurnToClick(cell, index));
+});
+
+heading.addEventListener("click", function () {
+  if (isWinner) {
+    return;
+  }
+  if (isgameOver) {
+    return;
+  }
+  location.href = "index.html";
 });
 
 //function to start game after start button pressed//
