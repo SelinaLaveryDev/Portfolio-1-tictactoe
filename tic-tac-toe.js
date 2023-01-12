@@ -52,7 +52,7 @@ function playerTurnToClick(cell, index) {
   }
 
   isWinner = determineWinner(playerTurn);
-  console.log(isWinner);
+  // console.log(isWinner);
 
   if (isWinner) {
     display.innerHTML = `Player ${playerTurn} WINS!`;
@@ -133,7 +133,7 @@ function setPlayerHover() {
   cells.forEach((cell) => {
     if (cell.innerHTML == "") {
       cell.classList.add(hoverTurn);
-      console.log(hoverTurn);
+      // console.log(hoverTurn);
     }
   });
 }
