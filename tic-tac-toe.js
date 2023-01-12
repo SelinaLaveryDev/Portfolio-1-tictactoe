@@ -19,21 +19,26 @@ Winner:
 */
 
 //VARIABLES of all board elements//
-const playerX = "X";
-const playerO = "O";
-// const winningCombinations =
-
 let display = document.querySelector(".display-score");
 const board = document.querySelector(".board");
 let playButton = document.querySelector("#start-btn");
 let cells = document.querySelectorAll(".grid-item");
-const clickSound = new Audio("sounds/click_sound.mp3");
-const winSound = new Audio("sounds/winning_sound.mp3");
-const noWinSound = new Audio("sounds/no_winner_sound.mp3");
+const playerX = "X";
+const playerO = "O";
 let isWinner = false;
+let isgameOver = false;
 let playerTurn = playerX; //player 1 starts
 let player1Clicks = []; //to record which cell player1 clicked
 let player2Clicks = []; //to record which cell player2 clicked
+//sound variables
+const clickSound = new Audio("sounds/click_sound.mp3");
+const winSound = new Audio("sounds/winning_sound.mp3");
+const noWinSound = new Audio("sounds/no_winner_sound.mp3");
+
+//event listener for the play button//
+playButton.addEventListener("click", function () {
+  startGame();
+});
 
 //function to start game after start button pressed//
 function startGame() {
@@ -48,22 +53,20 @@ function startGame() {
   });
   playerTurn = playerX;
   isWinner = false;
+  isgameOver = false;
 }
-
-//event listener for the play button//
-playButton.addEventListener("click", function () {
-  startGame();
-});
 
 function playerTurnToClick(cell, index) {
   if (isWinner) {
     return;
   }
+
   //when a cell is clicked
   if (cell.innerHTML !== "") {
     //if cell is not blank, do nothing.
     return;
   }
+
   if (playerTurn === "X") {
     cell.innerHTML = "X"; //changes to cross
     // console.log(!(cell === '')); //=>true
@@ -76,14 +79,17 @@ function playerTurnToClick(cell, index) {
     cell.style.backgroundColor = "#3FBFBF"; //and color changes #684d6b #F5621D
     player2Clicks.push(index); //push p2 cell log into array
   }
+
+  setPlayerHover();
   clickSound.play();
   isWinner = determineWinner(playerTurn);
   console.log(isWinner);
+  // addPlayerChoice(cell);
 
   if (isWinner) {
     display.innerHTML = `Player ${playerTurn} WINS!`;
     winSound.play();
-
+    gameOver();
     return;
   }
   if (player1Clicks.length + player2Clicks.length === 9 && !isWinner) {
@@ -102,11 +108,32 @@ function playerTurnToClick(cell, index) {
     display.style.backgroundColor = "#2980b9"; //player 1 display color change//
   }
 }
+
 //click listener event for the cells on board//
 cells.forEach((cell, index) => {
   //runs forEach function for each cell in grid//
   cell.addEventListener("click", () => playerTurnToClick(cell, index));
 });
+
+function setPlayerHover() {
+  if (isWinner) {
+    return;
+  }
+  //remove all hover text
+  cells.forEach((cell) => {
+    cell.classList.remove("hoverX");
+    cell.classList.remove("hoverO");
+  });
+
+  const hoverTurn = `hover${playerTurn}`;
+
+  cells.forEach((cell) => {
+    if (cell.innerHTML == "") {
+      cell.classList.add(hoverTurn);
+      console.log(hoverTurn);
+    }
+  });
+}
 
 function determineWinner(playerTurn) {
   const winningCombinations = [
@@ -131,6 +158,29 @@ function determineWinner(playerTurn) {
   }
   return false;
 }
+
+function gameOver() {
+  isgameOver = true;
+  cells.forEach((cell) => {
+    cell.classList.remove("hoverX");
+    cell.classList.remove("hoverO");
+  });
+}
+
+// function addPlayerChoice(cell) {
+//   if (playerTurn === "X") {
+//     cell.innerHTML = "X"; //changes to cross
+//     // console.log(!(cell === '')); //=>true
+//     cell.style.backgroundColor = "#2980b9"; //and color changes
+//     player1Clicks.push(index); //push p1 cell log into array
+//   } else {
+//     //player 2's turn//
+//     cell.innerHTML = "O"; //changes to circle
+//     // console.log(cell === '');//=>false
+//     cell.style.backgroundColor = "#3FBFBF"; //and color changes #684d6b #F5621D
+//     player2Clicks.push(index); //push p2 cell log into array
+//   }
+// }
 
 // function results(clicks) {
 //   const winningCombinations = [

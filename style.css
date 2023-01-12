@@ -104,3 +104,15 @@ footer {
 #indicate:hover ~ #flash #start-btn {
     background-color: red;
 }
+
+.hoverX:hover::after {
+    content: "x";
+    color: grey;
+    opacity: 0.4;
+}
+
+.hoverO:hover::after {
+    content: "o";
+    color: grey;
+    opacity: 0.4;
+}
