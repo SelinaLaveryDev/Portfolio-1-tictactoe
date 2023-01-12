@@ -56,6 +56,7 @@ function playerTurnToClick(cell, index) {
 
   if (isWinner) {
     display.innerHTML = `Player ${playerTurn} WINS!`;
+    display.style.backgroundColor = "#1E96FF";
     winSound.play();
     gameOver();
     return;
@@ -63,6 +64,7 @@ function playerTurnToClick(cell, index) {
 
   if (player1Clicks.length + player2Clicks.length === 9 && !isWinner) {
     display.innerHTML = "It's a DRAW!";
+    display.style.backgroundColor = "#1E96FF";
     noWinSound.play();
     gameOver();
     return;
@@ -70,11 +72,11 @@ function playerTurnToClick(cell, index) {
 
   if (playerTurn === "X") {
     playerTurn = "O"; //switch to player 2's turn
-    display.innerHTML = "Player O turn"; //display changes to prompt player 2 to take their turn//
+    display.innerHTML = "Player O"; //display changes to prompt player 2 to take their turn//
     display.style.backgroundColor = "#3FBFBF"; //player 2 display color change//
   } else {
     playerTurn = "X"; //switch to player 1's turn
-    display.innerHTML = "Player X turn"; //display changes to prompt player 1 to take their turn//
+    display.innerHTML = "Player X"; //display changes to prompt player 1 to take their turn//
     display.style.backgroundColor = "#2980b9"; //player 1 display color change//
   }
   setPlayerHover();
