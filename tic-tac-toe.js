@@ -102,12 +102,14 @@ function startGame() {
   display.innerHTML = "Player X to start";
   display.style.backgroundColor = "#2980b9";
   playButton.innerHTML = "Reset Game";
+  display.removeAttribute("id");
   player1Clicks = [];
   player2Clicks = [];
   cells.forEach(function (cell) {
     cell.innerHTML = "";
     cell.style.backgroundColor = "white";
   });
+
   playerTurn = playerX;
   isWinner = false;
   isgameOver = false;
@@ -168,4 +170,5 @@ function gameOver() {
     cell.classList.remove("hoverX");
     cell.classList.remove("hoverO");
   });
+  display.setAttribute("id", "indicate");
 }
