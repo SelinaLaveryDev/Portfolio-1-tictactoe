@@ -46,6 +46,9 @@ function playerTurnToClick(cell, index) {
   if (isWinner) {
     return;
   }
+  if (isgameOver) {
+    return;
+  }
 
   //when a cell is clicked
   if (cell.innerHTML !== "") {
@@ -80,6 +83,7 @@ function playerTurnToClick(cell, index) {
   if (player1Clicks.length + player2Clicks.length === 9 && !isWinner) {
     display.innerHTML = "It's a DRAW!";
     noWinSound.play();
+    gameOver();
     return;
   }
 
