@@ -40,22 +40,6 @@ playButton.addEventListener("click", function () {
   startGame();
 });
 
-//function to start game after start button pressed//
-function startGame() {
-  display.innerHTML = "Player X to start"; //change display
-  display.style.backgroundColor = "#2980b9"; //change display color #4d9186 #0CBF77 #0052CC
-  playButton.innerHTML = "Reset Game"; //change text to indicate different function
-  player1Clicks = [];
-  player2Clicks = [];
-  cells.forEach(function (cell) {
-    cell.innerHTML = ""; //the board clears
-    cell.style.backgroundColor = "white";
-  });
-  playerTurn = playerX;
-  isWinner = false;
-  isgameOver = false;
-}
-
 function playerTurnToClick(cell, index) {
   if (isWinner) {
     return;
@@ -80,10 +64,9 @@ function playerTurnToClick(cell, index) {
     player2Clicks.push(index); //push p2 cell log into array
   }
 
-  setPlayerHover();
-  clickSound.play();
   isWinner = determineWinner(playerTurn);
   console.log(isWinner);
+
   // addPlayerChoice(cell);
 
   if (isWinner) {
@@ -107,6 +90,8 @@ function playerTurnToClick(cell, index) {
     display.innerHTML = "Player X turn"; //display changes to prompt player 1 to take their turn//
     display.style.backgroundColor = "#2980b9"; //player 1 display color change//
   }
+  setPlayerHover();
+  clickSound.play();
 }
 
 //click listener event for the cells on board//
@@ -115,8 +100,29 @@ cells.forEach((cell, index) => {
   cell.addEventListener("click", () => playerTurnToClick(cell, index));
 });
 
+//function to start game after start button pressed//
+function startGame() {
+  display.innerHTML = "Player X to start"; //change display
+  display.style.backgroundColor = "#2980b9"; //change display color #4d9186 #0CBF77 #0052CC
+  playButton.innerHTML = "Reset Game"; //change text to indicate different function
+  player1Clicks = [];
+  player2Clicks = [];
+  cells.forEach(function (cell) {
+    cell.innerHTML = ""; //the board clears
+    cell.style.backgroundColor = "white";
+  });
+  playerTurn = playerX;
+  isWinner = false;
+  isgameOver = false;
+  setPlayerHover();
+}
+
 function setPlayerHover() {
   if (isWinner) {
+    return;
+  }
+
+  if (isgameOver) {
     return;
   }
   //remove all hover text
