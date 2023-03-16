@@ -8,6 +8,9 @@ I created this Tic-Tac-Toe game using HTML, CSS, and JavaScript. It was my initi
  - Hover affects for ease of use
  - Colour animation to indicate players turn
 
+## Live Demo
+You can try out a live demo of the game **[here](https://sml-40.github.io/Portfolio-1-tictactoe/index.html)**
+
 ## Technologies Used
 - Languages used:
   - HTML
@@ -88,9 +91,6 @@ A wireframe for a minimal looking board, with the display at the top to indicate
 The determineWinner function checks if a player has won the game by comparing their moves to the winning combinations. It takes in the current player's symbol (either "X" or "O") as a parameter and returns a boolean value indicating whether or not the player has won. The function checks if any of the winning combinations (stored in an array of arrays) are a subset of the current player's moves. If a winning combination is found to be a subset of the player's moves, the function returns true and the game is over. Otherwise, the function returns false and the game continues.
 
 <img width="664" alt="Determine Winner Function" src="https://user-images.githubusercontent.com/114579141/212081129-221b4a38-4f88-40f9-976d-bccb34297410.png">
-
-## Live Demo
-You can try out a live demo of the game **[here](https://sml-40.github.io/Portfolio-1-tictactoe/index.html)**
 
 ## Known Bugs
 - None at the moment
