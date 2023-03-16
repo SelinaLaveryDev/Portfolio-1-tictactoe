@@ -1,11 +1,12 @@
 # Portfolio-1-tictactoe
-A simple Tic-Tac-Toe game built with HTML, CSS, and JavaScript.
+I created this Tic-Tac-Toe game using HTML, CSS, and JavaScript. It was my initial solo project for General Assembly and enabled me to put into practice what I had learned in the preceding weeks.
 
-## How to play
-- The game is played on a 3x3 grid
-- Player X starts the game, and players take turns placing their X or O on the grid
-- The first player to get 3 of their symbols in a row (horizontally, vertically, or diagonally) wins the game
-- If the grid is filled and no player has won, the game is a draw
+![On page loading](https://user-images.githubusercontent.com/114579141/212066993-56536469-43db-4dfb-949e-9c03c88134b6.png)
+
+## Features
+ - Sound effects to indicate when the user wins or loses, and when they select a square
+ - Hover affects for ease of use
+ - Colour animation to indicate players turn
 
 ## Technologies Used
 - Languages used:
@@ -44,18 +45,6 @@ A simple Tic-Tac-Toe game built with HTML, CSS, and JavaScript.
 - As a user, I should not be able to continue playing once I win, lose, or tie
 - As a user, I should be able to play the game again without refreshing the page
 
-### Potential Extra Tic Tac Toe Features
-- Keep track of multiple game rounds with a win, lose and tie counter
-- Allow players to customize their tokens (X, O, name, picture, etc)
-- Use localStorage to persist data locally to allow games to continue after page refresh or loss of internet connectivity
-- Involve Audio in your game
-- Create an AI opponent: teach JavaScript to play an unbeatable game against you
-- Make your site fully responsive so that it is playable from a mobile phone
-- Get inventive with your styling e.g. use hover effects or animations
-
-### Super Potential Extra Tic Tac Toe Features
-- Allow 2 players to play online with each other using any means such as WebSockets, Firebase, or other 3rd-party services.
-
 ### Gold, silver, bronze planning for MVP
 - Bronze: 
   - An HTML page with a table of 9 cells. Just enough Javascript to show you who the current player is and change the background color of a cell when you click on it. Just enough CSS to make the cells visible.
@@ -71,11 +60,6 @@ A simple Tic-Tac-Toe game built with HTML, CSS, and JavaScript.
 A wireframe for a minimal looking board, with the display at the top to indicate the players turn and results, and a mandatory play button at the bottom which changes to the 'reset' button during play.
 
 ![Wireframe1](https://user-images.githubusercontent.com/114579141/212560309-f5949614-7363-43bb-8999-a0b45420613b.png)
-
-## Screenshots
-
-
-![On page loading](https://user-images.githubusercontent.com/114579141/212066993-56536469-43db-4dfb-949e-9c03c88134b6.png)
 
 ## Build/Code Process
 
