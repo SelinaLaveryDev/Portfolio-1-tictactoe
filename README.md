@@ -1,4 +1,4 @@
-# Portfolio-1-tictactoe
+# SEI Project 1 - Tic-Tac-Toe
 I created this Tic-Tac-Toe game using HTML, CSS, and JavaScript. It was my initial solo project for General Assembly and enabled me to put into practice what I had learned in the preceding weeks.
 
 ![On page loading](https://user-images.githubusercontent.com/114579141/212066993-56536469-43db-4dfb-949e-9c03c88134b6.png)
