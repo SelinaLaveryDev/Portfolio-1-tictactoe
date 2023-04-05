@@ -1,31 +1,33 @@
 # SEI Project 1 - Tic-Tac-Toe
-I created this Tic-Tac-Toe game using HTML, CSS, and JavaScript. It was my initial solo project for General Assembly and enabled me to put into practice what I had learned in the preceding weeks.
+I created this Tic-Tac-Toe game using HTML, CSS, and JavaScript. It was my first project for General Assembly and enabled me to put into practice what I had learned in the first few weeks of the course.
 
 ![Tic-Tac-Toe game](https://imgur.com/3fIgdrb.gif)
-
-## Features
- - Sound effects to indicate when the user wins or loses, and when they select a square
- - Hover affects for ease of use
- - Colour animation to indicate players turn
 
 ## Live Demo
 You can try out a live demo of the game **[here](https://sml-40.github.io/Portfolio-1-tictactoe/index.html)**
 
+### Timeframe
+6 days - solo project
+
+
 ## Technologies Used
-- Languages used:
-  - HTML
-  - CSS
-  - JavaScript
--Developer Tools:
-  - Command Line
-  - Visual Studio Code
-- Code Versioning Tools
-  -GitHub
--Deployment: GitHub Pages was used for deploying the project
--Wireframing and Design Tools:
-  - Wireframe.cc
-  - MDN Color Picker Tool
-  - Google Fonts
+ - Languages used:
+    - HTML
+    - CSS
+    - JavaScript
+ - Developer Tools:
+    - Command Line
+    - Visual Studio Code
+ - Code Versioning Tools:
+    - GitHub
+ - Deployment: GitHub Pages was used for deploying the project
+ - Wireframing and Design Tools:
+    - Wireframe.cc
+    - MDN Color Picker Tool
+    - Google Fonts
+ - Audio:
+    - Pixabay
+
 
 ### Technical Requirements
 
@@ -58,42 +60,103 @@ You can try out a live demo of the game **[here](https://sml-40.github.io/Portfo
 - Gold: 
   - CSS transitions or animations, showing "X" and "O" instead of colors, and Javascript that tells you when the game is over and who won.
 
+## Day 1 - Planning
 ### Wireframe
 
-A wireframe for a minimal looking board, with the display at the top to indicate the players turn and results, and a mandatory play button at the bottom which changes to the 'reset' button during play.
+I used Wireframe.cc, a free, online wireframing tool, to begin my design. I wanted to create a user-friendly, minimal looking board with the display at the top to indicate the players turn and results, and a mandatory play button at the bottom which changes to the 'reset' button during play.
+
 
 ![Wireframe1](https://user-images.githubusercontent.com/114579141/212560309-f5949614-7363-43bb-8999-a0b45420613b.png)
 
-## Build/Code Process
+### Pseudocoding and Basic Structure
 
-- Planning phase
-  - Review of the User stories and technical requirements, listed above.
-  - Wireframing used to create the intro screen, trying to keep the features as minimal looking as possible for a professional look
-  - Repo created using GitHub
-  - HTML, CSS and JS file created
-  - Psuedocode written in JS file to start planning and break the process into smaller steps
+Checklist:
+ - Create a 3 x 3 grid
+ - Press ‘play’ button:
+    - Game starts
+    - Board resets
+    - Display to show player turn
+ - Click board:
+    - When grid is clicked it should display X or O
+    - Display changes to indicate player turn
+    - Play button grey’s out
+ - Winner:
+    - When 3 in a row play stops
+    - Display winner
+    - Play button activates
+ - Event listeners:
+    - Play button
+    - Cell clicks
 
-- Coding phase
-  - Using the wireframe, I then created my HTML document, including the essential elements by breaking them down into 3 main divs with class names
-  - I began some basic styling with CSS, creating a grid for the gameboard
-  - My initial code in JavaScript included:
-      - Setting out my global variables
-      - Grabbing elements from HTML using query selector
-      - Initial event listeners for the play button and for the cells on the grid
-     
-## Key Functionality
-- The "startGame" function resets the game board, clears the player's moves, sets the starting player, and updates the display message. It is called when the   player clicks the start button.
-- The "playerTurnToClick" function handles the logic for each player's turn. It checks if the game is over or if the player has already clicked on the cell,   and updates the game board and player's moves accordingly. It also checks for a winner and updates the display message accordingly.
-- The "setPlayerHover" function adds a hover class to the cells that the current player can click on, allowing them to see where their next move can be made.   This function is called after each player turn.
-- The "gameOver" function is called when the game is over and disables all the click event listeners on the cells so that the game can't continue to be played.
+
+## Day 2 - Build Process
+
+HTML - I began by creating a 3 x 3 grid with in the main grid-container:
+
+<img width="570" alt="P1-HTML" src="https://user-images.githubusercontent.com/114579141/230222553-6fc547c3-1413-4ba7-a35d-66804f49f6a7.png">
+
+My next challenge was to add an event listener for the ‘cells’ on the grid. To do this I selected all elements that have a class of ‘grid-item’ using the querySelectorAll() method. This created a NodeList of all matching elements, which I stored in the ‘cells’ variable.
+
+I then used the forEach() method to loop over each element in the ‘cells’ NodeList, and added a click event listener to each element using the addEventListener() method.
+
+I used the same logic for the ‘resetBoard’ method which I later incorporated into the startGame function:
+
+![Screenshot 2023-04-05 at 23 16 13](https://user-images.githubusercontent.com/114579141/230224011-b9ee301e-7488-4a87-84af-ca5ee6b256ff.png)
+
+## Day 3 & 4 - Functionality for each player’s turn
+
+To enable the game to record each player's choice of square and to have the board respond between turns, I created an empty array for each player:
+
+![Screenshot 2023-04-05 at 23 20 45](https://user-images.githubusercontent.com/114579141/230224691-c1813c4e-3031-440d-905f-c315b172aa33.png)
+
+I spent most of day 3 creating the startGame() function. This function is called after the player clicks the ‘Start’ button, and it initiates the game with the following features:
+ 
+ - The display updates to show that it's Player X's turn to start, and the background colour of the display changes to a pleasing blue shade.
+ - The text on the ‘Start’ button changes to ‘Reset Game’ to allow the player to restart the game if necessary.
+ - Any existing id attribute is removed from the display, and the player1Clicks and player2Clicks arrays are reset to empty arrays in preparation for a new game.
+ - The innerHTML of each cell on the game board is cleared, and their background colors are reset to white.
+ - playerTurn is set to playerX, indicating that it's Player X's turn to play.
+ - isWinner is set to false, indicating that no player has won yet.
+ - isGameOver is set to false, indicating that the game is not yet over.
+ - setPlayerHover() is called to set the hover class on the game board to reflect the current player's turn.
+
+![Screenshot 2023-04-05 at 23 26 24](https://user-images.githubusercontent.com/114579141/230225347-5e47b987-d7ca-49dd-a086-76a5f75427d8.png)
+
+In the playerTurnToClick function the cell index is pushed and stored in the array for that player:
+
+![Screenshot 2023-04-05 at 23 28 03](https://user-images.githubusercontent.com/114579141/230225541-3f9a9fd7-f82b-4e39-9c0f-def20d0caa36.png)
+
+I wanted to add a hover aesthetic during game play so that if player X was taking their turn, they could visualise their next move with the help of the setPlayerHover function:
+
+![Screenshot 2023-04-05 at 23 29 47](https://user-images.githubusercontent.com/114579141/230225780-0b817d03-fd11-4635-b2c9-0bc35e5fdde2.png)
 
 ## Determining the Winner
 The determineWinner function checks if a player has won the game by comparing their moves to the winning combinations. It takes in the current player's symbol (either "X" or "O") as a parameter and returns a boolean value indicating whether or not the player has won. The function checks if any of the winning combinations (stored in an array of arrays) are a subset of the current player's moves. If a winning combination is found to be a subset of the player's moves, the function returns true and the game is over. Otherwise, the function returns false and the game continues.
 
 <img width="664" alt="Determine Winner Function" src="https://user-images.githubusercontent.com/114579141/212081129-221b4a38-4f88-40f9-976d-bccb34297410.png">
 
-## Known Bugs
-- None at the moment
+## Challenges
+During the testing of my Tic-Tac-Toe game, I observed that many users would accidentally click on the display section at the top of the game board instead of the start button at the bottom. To address this usability issue, I added a hover function that would highlight the start button when the user hovers over the display section.
+ 
+However, linking the two elements presented a challenge since there are other divs in between them. To solve this problem, I wrote the CSS code with the following selector:
+
+![Screenshot 2023-04-05 at 23 35 55](https://user-images.githubusercontent.com/114579141/230226748-280c49e3-e064-4df1-ab91-7bbb03813dbc.png)
+
+This selector uses the ~ (general sibling) selector to match any element with an id of flash that comes after an element with an id of indicate and then targets the #start-btn element within that matched flash element. When the user hovers over the #indicate element, the background-color of the #start-btn element is changed to red to highlight it.
+
+## Wins
+ - I'm proud to have met the MVP for my first JavaScript project and achieved all three bronze, silver, and gold requirements.
+ - Additionally, I added sound effects to create a more immersive experience for the user. 
+
+## Key Learnings
+Throughout the Tic-Tac-Toe project, I gained confidence in several technologies and tools. For example:
+
+ - I learned to use the ternary operator to simplify conditional assignments and avoid the clutter of multiple if-else statements. 
+ - Console logging was also essential for testing and debugging my code. 
+ - And I became more comfortable with array methods, such as, some, every, and includes.
+ 
+In addition to technical skills, I also gained valuable experience with engineering processes like daily stand-ups. These meetings helped me understand my colleagues' progress and challenges and allowed us to provide mutual support and feedback. Overall, the project taught me the importance of collaboration, communication, and continuous learning in software development.
+
 
 ## Future Updates
 - Add a scoreboard to keep track of wins and draws
