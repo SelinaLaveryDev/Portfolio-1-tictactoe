@@ -159,7 +159,7 @@ In addition to technical skills, I also gained valuable experience with engineer
 
 
 ## Future Updates
-- Add a scoreboard to keep track of wins and draws
-- Add a scorethrough to highlight the winning row or column
-- Add a feature that allows players to choose their symbols
-- Add a feature that allows players to play against a computer
+- Add a scoreboard to keep track of wins and draws.
+- Add a scorethrough to highlight the winning row or column.
+- Add a feature that allows players to choose their symbols.
+- Add a feature that allows players to play against a computer.
