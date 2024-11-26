@@ -4,7 +4,7 @@ I created this Tic-Tac-Toe game using HTML, CSS, and JavaScript. It was my first
 ![Tic-Tac-Toe game](https://imgur.com/3fIgdrb.gif)
 
 ## Live Demo
-You can try out a live demo of the game **[here](https://sml-40.github.io/Portfolio-1-tictactoe/index.html)**
+You can try out a live demo of the game **[here](https://selinalaverydev.github.io/Portfolio-1-tictactoe/)**
 
 ### Timeframe
 6 days - solo project
